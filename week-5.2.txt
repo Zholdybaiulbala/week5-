@@ -1,0 +1,9 @@
+   Deposited: 500. New balance: 500
+Account Number: 123456789, Owner: Alice, Balance: 500
+Withdrew: 200. New balance: 300
+Account Number: 123456789, Owner: Alice, Balance: 300
+Withdrew: 100. New balance: 200
+Deposited: 100. New balance: 100
+Transferred 100 to 987654321
+Account Number: 123456789, Owner: Alice, Balance: 200
+Account Number: 987654321, Owner: Bob, Balance: 100

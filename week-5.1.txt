@@ -1,0 +1,69 @@
+    public void Deposit(decimal amount)
+    {
+        if (amount > 0)
+        {
+            Balance += amount; 
+            Console.WriteLine($"Deposited: {amount}. New balance: {Balance}");
+        }
+        else
+        {
+            Console.WriteLine("Deposit amount must be positive.");
+        }
+    }
+
+ 
+    public void Withdraw(decimal amount)
+    {
+        if (amount > 0 && amount <= Balance)
+        {
+            Balance -= amount;
+            Console.WriteLine($"Withdrew: {amount}. New balance: {Balance}");
+        }
+        else if (amount > Balance)
+        {
+            Console.WriteLine("Insufficient funds."); 
+        }
+        else
+        {
+            Console.WriteLine("Withdrawal amount must be positive."); 
+        }
+    }
+
+    
+    public void Transfer(BankAccount targetAccount, decimal amount)
+    {
+        if (amount > 0 && amount <= Balance)
+        {
+            Withdraw(amount); 
+            targetAccount.Deposit(amount); 
+            Console.WriteLine($"Transferred {amount} to {targetAccount.AccountNumber}");
+        }
+        else
+        {
+            Console.WriteLine("Transfer failed due to insufficient funds or invalid amount."); 
+        }
+    }
+
+    public string GetAccountInfo()
+    {
+        return $"Account Number: {AccountNumber}, Owner: {Owner}, Balance: {Balance}"; 
+    }
+
+    static void Main(string[] args)
+    {
+        BankAccount account1 = new BankAccount("123456789", "Alice");
+        
+        account1.Deposit(500);
+        Console.WriteLine(account1.GetAccountInfo()); 
+
+        
+        account1.Withdraw(200);
+        Console.WriteLine(account1.GetAccountInfo()); 
+
+        BankAccount account2 = new BankAccount("987654321", "Bob");
+
+        account1.Transfer(account2, 100);
+        Console.WriteLine(account1.GetAccountInfo()); 
+        Console.WriteLine(account2.GetAccountInfo());
+    }
+}

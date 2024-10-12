@@ -1,0 +1,19 @@
+using System;
+
+class BankAccount
+{
+    public string AccountNumber { get; private set; }
+
+    
+    public decimal Balance { get; private set; }
+
+  
+    public string Owner { get; private set; }
+
+  
+    public BankAccount(string accountNumber, string owner)
+    {
+        AccountNumber = accountNumber;
+        Owner = owner; 
+        Balance = 0;
+    }
